@@ -33,12 +33,17 @@ Terminal
     cd \solutions_python_generation
     python test.py
 
-Скрипт test.py попросит путь к папке со скриптом нашего решения (в моем примере это module10/part_10_5/task8) от того корня, котором сидим, название скрипта (в моем случае это task8.py):
+Скрипт test.py попросит путь к папке со скриптом нашего решения (в моем примере это module10/part_10_5/task8) от того корня, котором сидим, название скрипта (в моем случае это task8.py).
 Если бесит, не вставляется с ctrl+V, жмите ctrl+shift+V
 
 Terminal
 
+попросили вставить название папки, кормим ему этого:
+
     module10/part_10_5/task8
+
+попросили вставить название скрипта с нашим решением, кормим ему вот этого:
+
     task8.py
 
 3. Все!
@@ -46,5 +51,5 @@ Terminal
 P.S. там принт какой-то лишний болтается, мне лень его было кикнуть :)
 
 <img src="https://github.com/PavloOps/pygen_grader/blob/main/result_pycharm.png" width="800"/>
-<img src="https://github.com/PavloOps/pygen_grader/blob/main/result_shell.png" width="800"/>
-<img src="https://github.com/PavloOps/pygen_grader/blob/main/result_vscode.png" width="800"/>
+<img src="https://github.com/PavloOps/pygen_grader/blob/main/result_shell.png" width="600"/>
+<img src="https://github.com/PavloOps/pygen_grader/blob/main/result_vscode.png" width="600"/>
