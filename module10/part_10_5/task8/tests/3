@@ -1,0 +1,14 @@
+generator = palindromes()
+
+for _ in range(10_000):
+    next(generator)
+
+print(next(generator))
+print(next(generator))
+print(next(generator))
+print(next(generator))
+print(next(generator))
+print(next(generator))
+print(next(generator))
+print(next(generator))
+print(next(generator))
