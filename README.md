@@ -43,4 +43,8 @@ Terminal
 
 3. Все!
 
-<img src="___" width="600"/>
+P.S. там принт какой-то лишний болтается, мне лень его было кикнуть :)
+
+<img src="https://github.com/PavloOps/pygen_grader/blob/main/result_pycharm.png" width="800"/>
+<img src="https://github.com/PavloOps/pygen_grader/blob/main/result_shell.png" width="800"/>
+<img src="https://github.com/PavloOps/pygen_grader/blob/main/result_vscode.png" width="800"/>
