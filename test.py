@@ -4,6 +4,7 @@ import time
 import psutil
 import subprocess
 import sys
+import re
 
 
 def load_test_file(file_path):
@@ -12,14 +13,12 @@ def load_test_file(file_path):
 
 
 if __name__ == "__main__":
-    module_folder = input("Enter task's folder path from the current root: ")
-    tested_file = input("Enter your py-file name to test: ")
+    module_folder, tested_file = input("Enter task's folder path from the current root and py-file name: ").split()
 
     DIR = pathlib.Path(__file__).parent.resolve()
     tests = os.path.join(DIR, f'{module_folder}\\tests')
     executor = os.path.join(DIR, f'executor.py')
     program = load_test_file(os.path.join(DIR, f'{module_folder}\\{tested_file}'))
-    print(len(os.listdir(tests)))
 
     n_tests = len(os.listdir(tests)) // 2
     python_version = 'python3' if sys.platform in {'linux', 'linux2', 'darwin'} else 'python'
@@ -28,10 +27,22 @@ if __name__ == "__main__":
         process = psutil.Process(os.getpid())
         start_time = time.time()
 
-        test_data = load_test_file(os.path.join(tests, str(i)))
         correct = load_test_file(os.path.join(tests, f'{str(i)}.clue'))
+        test_data = load_test_file(os.path.join(tests, str(i)))
 
-        completed_process = subprocess.run([python_version, executor], input='\n'.join(program + test_data),
+        check_if_function = any(
+                                map(
+                                    lambda line: re.search(r"print(.*?)", line), test_data))
+
+        if check_if_function:
+            completed_process = subprocess.run([python_version, executor],
+                                               input='\n'.join(
+                                                   program + test_data),
+                                               capture_output=True,
+                                               encoding='utf-8')
+        else:
+            executor_file = os.path.join(DIR, f'{module_folder}\\{tested_file}')
+            completed_process = subprocess.run([python_version, executor_file], input='\n'.join(test_data),
                                            capture_output=True, encoding='utf-8')
         result_bytes = completed_process.stdout
         result = result_bytes.strip().splitlines()
@@ -51,4 +62,3 @@ if __name__ == "__main__":
         memory_usage = process.memory_info().rss / 1024 / 1024
         print(
             f'Тест №{i} пройден(✓), время выполнения: {elapsed_time:.2f} секунд, использовано памяти: {memory_usage:.2f} MB')
-        time.sleep(0.5)
