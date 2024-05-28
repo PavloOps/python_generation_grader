@@ -47,8 +47,11 @@ ${\color{green}NEW!:}$
 
 3. Все!
 
-P.S. там принт какой-то лишний болтается, мне лень его было кикнуть :)
+P.S. Должно работать и на фукнции, и на скрипты ввод-вывод
 
-<img src="https://github.com/PavloOps/pygen_grader/blob/main/result_pycharm.png" width="800"/>
-<img src="https://github.com/PavloOps/pygen_grader/blob/main/result_shell.png" width="600"/>
-<img src="https://github.com/PavloOps/pygen_grader/blob/main/result_vscode.png" width="600"/>
+![изображение](https://github.com/PavloOps/pygen_grader/assets/81432445/d7325043-1805-4e23-9563-b7b012a2f623)
+
+![изображение](https://github.com/PavloOps/pygen_grader/assets/81432445/251255bb-c8df-4fe5-a5de-ab7164fee29a)
+
+![изображение](https://github.com/PavloOps/pygen_grader/assets/81432445/1f8a0cfa-bb95-4c57-8f77-82301f0c4df2)
+
