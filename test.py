@@ -31,31 +31,46 @@ if __name__ == "__main__":
         test_data = load_test_file(os.path.join(tests, str(i)))
 
         check_if_function = any(
-                                map(
-                                    lambda line: re.search(r"print(.*?)", line), test_data))
+            map(lambda line: re.search(r"print(.*?)", line), test_data))
 
-        if check_if_function:
-            completed_process = subprocess.run([python_version, executor],
-                                               input='\n'.join(
-                                                   program + test_data),
-                                               capture_output=True,
-                                               encoding='utf-8')
-        else:
-            executor_file = os.path.join(DIR, f'{module_folder}\\{tested_file}')
-            completed_process = subprocess.run([python_version, executor_file], input='\n'.join(test_data),
-                                           capture_output=True, encoding='utf-8')
-        result_bytes = completed_process.stdout
-        result = result_bytes.strip().splitlines()
+        try:
+            if check_if_function:
+                completed_process = subprocess.run([python_version, executor],
+                                                   input='\n'.join(
+                                                       program + test_data),
+                                                   capture_output=True,
+                                                   encoding='utf-8',
+                                                   check=True)
+            else:
+                executor_file = os.path.join(DIR,
+                                             f'{module_folder}\\{tested_file}')
+                completed_process = subprocess.run(
+                    [python_version, executor_file],
+                    input='\n'.join(test_data),
+                    capture_output=True,
+                    encoding='utf-8',
+                    check=True)
+            result_bytes = completed_process.stdout
+            result = result_bytes.strip().splitlines()
 
-        if result != correct:
-            print(f"Test#{i} Input:")
-            print('\n'.join(test_data))
-            print(f"Test#{i} Expected Output:")
-            print('\n'.join(correct))
-            print(f"Test#{i} Actual Output:")
-            print('\n'.join(result))
+            if result != correct:
+                print(f"Test#{i} Input:")
+                print('\n'.join(test_data))
+                print(f"Test#{i} Expected Output:")
+                print('\n'.join(correct))
+                print(f"Test#{i} Actual Output:")
+                print('\n'.join(result))
 
-        assert result == correct, f"Test#{i}\n{'-' * 69}\nexpect:{repr(correct)}\nresult:{repr(result)}\n"
+            assert result == correct, f"Test#{i}\n{'-' * 69}\nexpect:{repr(correct)}\nresult:{repr(result)}\n"
+
+        except subprocess.CalledProcessError as e:
+            print(f"\n 💀 💀 💀 Тест №{i} провален:{e}")
+            print(f"\n\tError message: {e.stderr}\n")
+            break
+        except Exception as e:
+            print(f"Test#{i} failed with an unexpected error: {e}")
+            print(f"Error type: {type(e).__name__}")
+            break
 
         end_time = time.time()
         elapsed_time = end_time - start_time
