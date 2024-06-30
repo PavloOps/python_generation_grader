@@ -1,4 +1,0 @@
-generator = palindromes()
-numbers = [next(generator) for _ in range(30)]
-
-print(*numbers)
