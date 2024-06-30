@@ -21,7 +21,7 @@ ${\color{green}Troubles:}$
     mkdir part5_2
     python at_first.py
 
-Скрипт at_first.py попросит указать место для нашего будущего решения (в моем примере это part5_2) от того корня, котором сидим, и через пробел номер задачи (в моем случае - это 6, то есть задача шестая). 
+Скрипт at_first.py попросит указать место для нашего будущего решения (в моем примере это part5_2) от того корня, котором сидим, и через пробел номер задачи (в моем случае - это 6, то есть задача шестая): `Enter task's folder path to a learning module and a number of solution's file: `. 
 
     part5_2 6
 
@@ -38,10 +38,12 @@ ${\color{green}Troubles:}$
     cd /Documents/LEARNING_DATA_SCIENCE/OOP
     python test.py
 
-Скрипт test.py попросит путь к скрипту (в моем случае это part5_2/task6/task6.py: `Enter task's folder path from the current root and py-file name:`), кормим ему этого: 
+Скрипт test.py попросит путь к скрипту (в моем случае это part5_2/task6/task6.py: `Enter py-file's path from the content root: `), кормим ему этого: 
 
     part5_2/task6/task6.py
 
 3. Все!
 
-![изображение](https://github.com/PavloOps/python_generation_grader/assets/81432445/7b9e1963-ec07-4910-987a-008273a5c1e8)
+![изображение](https://github.com/PavloOps/python_generation_grader/assets/81432445/46182d49-d246-47da-92d8-6025b7291fc5)
+
+
