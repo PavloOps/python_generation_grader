@@ -109,7 +109,7 @@ def log_error(file: str) -> None:
 
 if __name__ == "__main__":
     script_file = input(
-        "Enter task's folder path from the current root and py-file name: "
+        "Enter py-file's path from the content root: "
     )
     module_folder, tested_file = os.path.split(script_file)
     DIR = pathlib.Path(__file__).parent.resolve()
